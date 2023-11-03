@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.jpg')}}" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="title" content="Real-time satisfaction analysis" />
+    <meta name="description" content="Visning af databaseindhold i realtid" />
+	<title>Real-time satisfaction analysis | IoT GRP5</title>
+	<link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="container-content">
+		<div id="content-inner">
+			<div class="centercolumn">
+				<div id="page-content">
+					<h1>Tilfredshedsmåling i realtid</h1>
+                    <hr />
+                    <h2>Borgertilfredshed</h2>
+					<p> Grafen viser borgertilfredsheden set over den seneste måned. Nedenfor ses de 10 nyeste målinger.
+                    OSTEGRAF TIL HØJRE
+                    <table>
+					<tbody>
+					<tr>
+					<th>Dato</th>
+					<th>Klient ID</th>
+					<th>Tilfredshed</th>
+					</tr>
+                    {% for row in service %}
+                        <tr>
+                            <td>{{row[0]}}</td>
+                            <td>{{row[1]}}</td>
+                            <td>{{row[2]}}</td>
+                        </tr>
+                    {% endfor %}
+					</tbody>
+					</table>
+					<hr />
+					<h2>Driftstatus</h2>
+					<table>
+					<tbody>
+					<tr>
+
+					<th>Dato</th>
+					<th>Klient ID</th>
+					<th>Klient IP</th>
+					<th>Broker IP</th>
+					</tr>
+                    {% for row in ITtek%}
+                        <tr>
+                            <td>{{row[0]}}</td>
+                            <td>{{row[1]}}</td>
+                            <td>{{row[2]}}</td>
+                            <td>{{row[3]}}</td>
+                        </tr>
+                    {% endfor %}
+					</tr>
+					</tbody>
+					</table>
+				</div><!-- end #page-content -->
+			</div><!-- end .centercolumn -->
+		</div><!-- end #content-inner -->
+	</div><!-- end #container-content -->
+
+  <div id="footer">
+        <div class="centercolumnFooter">
+            <div id="footer-right"><img src="{{url_for('static', filename='logo_75px.png')}}"/></div>
+            <div id="footer-left"><p>IoT projekt; 2023 af Gruppe 5</p></div><!-- end #footer-right --></div><!-- end #footer-left -->
+        </div><!-- end .centercolumn -->
+    </div>	
+</div><!-- end #wrapper -->
+
+</body>
+</html>
